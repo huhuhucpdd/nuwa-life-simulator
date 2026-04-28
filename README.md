@@ -56,26 +56,6 @@
 
 ---
 
-## 系统结构
-
-nuwa-life-simulator/
-├── README.md # 本文件
-├── SKILL.md # 智能体主指令
-├── LICENSE # MIT 许可证
-├── DISCLAIMER.md # 免责声明
-├── CONTRIBUTING.md # 贡献指南
-├── references/
-│ ├── self-distillation.md # 第零至四层自我蒸馏
-│ ├── path-matching.md # 五维路径匹配引擎
-│ ├── simulation-engines.md # 量子人生模拟器 & 时间编辑
-│ ├── output-protocols.md # 输出规范与模板
-│ ├── privacy-sandbox.md # 隐私安全沙盒协议
-│ ├── question-bank.md # 题库（萃取与反美化）
-│ └── event-deck.md # 人生事件牌库
-└── examples/
-└── sample-session.md # 完整演示对话
-
----
 
 ## 隐私保证
 
