@@ -1,9 +1,5 @@
 # 赛博女娲 · 个人量子人生模拟器（nuwa-life-simulator.skill）
-
-<img width="1200" height="941" alt="时间线" src="https://github.com/user-attachments/assets/41ac3d79-af3f-4217-aacb-bba4867776fb" />
-
 >**“如果当时选了另一条路，现在的你会是什么样？—— 这不是疑问，这是一个可以玩的存档。”**
-
 [![交互式推演](https://img.shields.io/badge/🎮_交互式推演-时间线自由编辑-ff69b4?style=for-the-badge&logo=windowsterminal&logoColor=white&labelColor=0d1117)](#)
 [![隐私沙盒](https://img.shields.io/badge/🔐_隐私沙盒-只提取特征,不存储原始数据-2ea043?style=for-the-badge&logo=privacy&logoColor=white&labelColor=0d1117)](#)
 [![平行时间线](https://img.shields.io/badge/🌌_平行时间线-α・β・γ_动态模拟-1f6feb?style=for-the-badge&logo=git&logoColor=white&labelColor=0d1117)](#)
@@ -17,6 +13,8 @@
 ⏱️ **暂停现在，回溯任意时间点**  
 ✍️ **改写曾经的选择（一句话、一本书、一次告白）**  
 🌌 **即时生成平行人生对比卡**
+
+<img width="1672" height="941" alt="时间线" src="https://github.com/user-attachments/assets/c9c5aa79-435f-478b-9412-7548b125d004" />
 
 这不是职业测试，也不是情感分析。  
 **这是你人生的版本控制工具。**  
