@@ -2,10 +2,14 @@
 
 > **“如果当时选了另一条路，现在的你会是什么样？—— 这不是疑问，这是一个可以玩的存档。”**
 
-[![Demo](https://img.shields.io/badge/🎮-交互式推演-ff69b4)](#)
-[![Privacy](https://img.shields.io/badge/🔐-隐私沙盒-green)](#)
-[![Parallel](https://img.shields.io/badge/🌌-平行时间线-blue)](#)
-[![Edit](https://img.shields.io/badge/🕹️-可编辑人生存档-orange)](#)
+[![交互式推演](https://img.shields.io/badge/🎮_交互式推演-时间线自由编辑-ff69b4?style=for-the-badge&logo=windowsterminal&logoColor=white&labelColor=0d1117)](#)
+[![隐私沙盒](https://img.shields.io/badge/🔐_隐私沙盒-只提取特征,不存储原始数据-2ea043?style=for-the-badge&logo=privacy&logoColor=white&labelColor=0d1117)](#)
+[![平行时间线](https://img.shields.io/badge/🌌_平行时间线-α・β・γ_动态模拟-1f6feb?style=for-the-badge&logo=git&logoColor=white&labelColor=0d1117)](#)
+[![可编辑人生存档](https://img.shields.io/badge/🕹️_可编辑存档-暂停・回溯・修改-db61a2?style=for-the-badge&logo=save&logoColor=white&labelColor=0d1117)](#)
+
+[![GitHub stars](https://img.shields.io/github/stars/你的ID/nuwa-life-simulator?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117&color=yellow)](#)
+[![License](https://img.shields.io/github/license/你的ID/nuwa-life-simulator?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=0d1117&color=white)](#)
+[![Version](https://img.shields.io/badge/version-2.0-7b4df2?style=for-the-badge&logo=version&logoColor=white&labelColor=0d1117)](#)
 
 ⏱️ **暂停现在，回溯任意时间点**  
 ✍️ **改写曾经的选择（一句话、一本书、一次告白）**  
