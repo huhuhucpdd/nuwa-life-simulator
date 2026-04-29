@@ -73,3 +73,4 @@
 [![Email](https://img.shields.io/badge/Email-2037131983@qq.com-important)](mailto:2037131983@qq.com)
 [![GitHub](https://img.shields.io/badge/GitHub-huhuhucpdd-lightgrey)](https://github.com/huhuhucpdd)
 
+本项目说明：本项目处于项目初级阶段，做的不好的地方请各位老爷高抬贵手！希望大家共建！
