@@ -5,14 +5,19 @@
 [![平行时间线](https://img.shields.io/badge/🌌_平行时间线-α・β・γ_动态模拟-1f6feb?style=for-the-badge&logo=git&logoColor=white&labelColor=0d1117)](#)
 [![可编辑人生存档](https://img.shields.io/badge/🕹️_可编辑存档-暂停・回溯・修改-db61a2?style=for-the-badge&logo=save&logoColor=white&labelColor=0d1117)](#)
 [![科学推演](https://img.shields.io/badge/🧬_推演引擎-统计基线+个人偏离+随机-7b4df2?style=for-the-badge&logo=framework&logoColor=white&labelColor=0d1117)](#)
-
-[![GitHub stars](https://img.shields.io/github/stars/你的ID/nuwa-life-simulator?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117&color=yellow)](#)
-[![License](https://img.shields.io/github/license/你的ID/nuwa-life-simulator?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=0d1117&color=white)](#)
+[![Status: Early Stage](https://img.shields.io/badge/Status-Early%20Stage-orange.svg)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/huhuhucpdd/nuwa-life-simulator?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117&color=yellow)](#)
+[![License](https://img.shields.io/github/license/huhuhucpdd/nuwa-life-simulator?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=0d1117&color=white)](#)
 [![Version](https://img.shields.io/badge/version-2.0-7b4df2?style=for-the-badge&logo=version&logoColor=white&labelColor=0d1117)](#)
 
-⏱️ **暂停现在，回溯任意时间点**  
-✍️ **改写曾经的选择（一句话、一本书、一次告白）**  
-🌌 **即时生成平行人生对比卡**
+## 这是什么？
+
+**赛博女娲**是一套结构化 Prompt（Skill），让你能在支持长上下文的 AI 对话中，对自己的真实人生进行"版本控制"：
+
+- 🕐 **回溯**：回到过去任意决策节点
+- ✍️ **改写**：修改一个选择，看世界如何分叉（一句话、一本书、一次告白）
+- 🌌 **推演**：AI 基于你的行为模式生成平行人生对比
 
 <img width="1672" height="941" alt="时间线" src="https://github.com/user-attachments/assets/c9c5aa79-435f-478b-9412-7548b125d004" />
 
