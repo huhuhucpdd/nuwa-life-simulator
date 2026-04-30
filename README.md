@@ -65,21 +65,8 @@
   **🕸️ 三层因果网络**  
   推演不是线性的：我们维护一张 `微观（你的日常决策）→ 中观（社交圈、职业环境）→ 宏观（经济周期、技术变革）` 的贝叶斯网络，每次你报告新的人生事件，整张网络都会更新一次先验概率，让推演随你一同进化。
 
----
-## 项目结构
-nuwa-life-simulator.skill/
-├── prompts/
-│   ├── system-prompt.md          # 完整系统提示词（~3000字）
-│   └── quick-start-prompt.txt    # 精简体验版
-├── data/
-│   ├── question-bank.json        # 特征校准题库（50题，全部可选）
-│   └── event-cards.json          # 黑天鹅事件库
-├── docs/
-│   ├── architecture.md           # 技术实现说明
-│   └── privacy-sandbox.md        # 隐私协议
-└── assets/
-└── screenshots/              # 使用演示截图
 
+---
 ## 隐私保证
 
 所有原始个人数据**仅在你自己的对话环境中处理**，AI 只接收匿名结构化特征。处理完成后会提醒你删除原始数据。详见 `references/privacy-sandbox.md`。
