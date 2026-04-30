@@ -7,101 +7,127 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             color: #e0e0e0;
             min-height: 100vh;
             padding: 20px;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
         h1 {
             text-align: center;
-            font-size: 2em;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #00d4ff, #a855f7, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .subtitle {
             text-align: center;
-            color: #888;
+            color: #a0a0b0;
             margin-bottom: 30px;
+            font-size: 0.95em;
         }
         .setup-box, .chat-box {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 24px;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 28px;
             margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.08);
         }
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
         label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-size: 0.9em;
-            color: #aaa;
+            color: #b0b0c0;
+            font-weight: 500;
         }
         input, select, textarea {
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(0,0,0,0.3);
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(0,0,0,0.25);
             color: #fff;
             font-size: 1em;
+            transition: all 0.2s;
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: #00d4ff;
+            box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+        }
+        select option {
+            background: #1a1a2e;
+            color: #fff;
         }
         .hint {
             font-size: 0.8em;
             color: #666;
-            margin-top: 4px;
+            margin-top: 6px;
+            line-height: 1.5;
         }
+        .hint a { color: #00d4ff; }
         button {
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            background: linear-gradient(90deg, #00d4ff, #a855f7);
             color: white;
             border: none;
-            padding: 12px 32px;
-            border-radius: 8px;
-            font-size: 1em;
+            padding: 14px 36px;
+            border-radius: 12px;
+            font-size: 1.05em;
             cursor: pointer;
-            transition: opacity 0.2s;
+            transition: all 0.2s;
+            font-weight: 600;
+            width: 100%;
         }
-        button:hover { opacity: 0.9; }
-        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+        button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
         
         .chat-messages {
-            height: 400px;
+            height: 450px;
             overflow-y: auto;
             margin-bottom: 16px;
-            padding: 16px;
+            padding: 20px;
             background: rgba(0,0,0,0.2);
-            border-radius: 12px;
+            border-radius: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.1) transparent;
         }
+        .chat-messages::-webkit-scrollbar { width: 6px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+        
         .message {
             margin-bottom: 16px;
-            padding: 12px 16px;
-            border-radius: 12px;
-            max-width: 85%;
-            line-height: 1.6;
+            padding: 14px 18px;
+            border-radius: 16px;
+            max-width: 88%;
+            line-height: 1.7;
             white-space: pre-wrap;
+            font-size: 0.95em;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .user-message {
-            background: rgba(0, 212, 255, 0.15);
+            background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(0,212,255,0.05));
             margin-left: auto;
             border-bottom-right-radius: 4px;
+            border: 1px solid rgba(0,212,255,0.2);
         }
         .ai-message {
-            background: rgba(123, 44, 191, 0.15);
+            background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(168,85,247,0.05));
             margin-right: auto;
             border-bottom-left-radius: 4px;
+            border: 1px solid rgba(168,85,247,0.2);
         }
         .input-area {
             display: flex;
@@ -114,15 +140,68 @@
             text-align: center;
             color: #00d4ff;
             padding: 20px;
+            font-style: italic;
         }
         .error {
-            background: rgba(255,0,0,0.1);
-            color: #ff6b6b;
-            padding: 12px;
-            border-radius: 8px;
+            background: rgba(239,68,68,0.1);
+            color: #fca5a5;
+            padding: 14px;
+            border-radius: 12px;
             margin-bottom: 16px;
+            border: 1px solid rgba(239,68,68,0.2);
+        }
+        .success {
+            background: rgba(34,197,94,0.1);
+            color: #86efac;
+            padding: 14px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(34,197,94,0.2);
         }
         .hidden { display: none; }
+        
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            margin-right: 6px;
+            font-weight: 600;
+        }
+        .tag-free { background: rgba(34,197,94,0.2); color: #86efac; }
+        .tag-paid { background: rgba(239,68,68,0.2); color: #fca5a5; }
+        .tag-cn { background: rgba(59,130,246,0.2); color: #93c5fd; }
+        
+        .provider-info {
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 8px;
+            font-size: 0.85em;
+            color: #888;
+        }
+        
+        .quick-starts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .quick-start-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.85em;
+            color: #ccc;
+            transition: all 0.2s;
+        }
+        .quick-start-btn:hover {
+            background: rgba(0,212,255,0.1);
+            border-color: rgba(0,212,255,0.3);
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -133,41 +212,70 @@
         <!-- 设置面板 -->
         <div id="setupPanel" class="setup-box">
             <div class="form-group">
-                <label>选择 AI 提供商</label>
-                <select id="provider">
-                    <option value="openai">OpenAI (GPT-4)</option>
-                    <option value="anthropic">Anthropic (Claude 3)</option>
+                <label>选择 AI 模型</label>
+                <select id="provider" onchange="updateProviderInfo()">
+                    <!-- 免费模型 -->
+                    <option value="openai">OpenAI GPT-4o (付费)</option>
+                    <option value="anthropic">Anthropic Claude 3.5 (付费)</option>
+                    <option value="gemini">Google Gemini 1.5 Pro (免费额度)</option>
+                    <option value="gemini-flash">Google Gemini 1.5 Flash (免费)</option>
+                    <option value="siliconflow">SiliconFlow (国内/免费额度)</option>
+                    <option value="deepseek">DeepSeek (国内/免费额度)</option>
+                    <option value="moonshot">Moonshot AI (国内/免费额度)</option>
+                    <option value="zhipu">智谱 GLM-4 (国内/免费额度)</option>
+                    <option value="custom">自定义 OpenAI 兼容 API</option>
                 </select>
+                <div id="providerInfo" class="provider-info"></div>
             </div>
             
             <div class="form-group">
                 <label>API Key</label>
-                <input type="password" id="apiKey" placeholder="sk-... 或 sk-ant-...">
-                <p class="hint">🔒 仅存储在本地浏览器，不会上传到任何服务器</p>
+                <input type="password" id="apiKey" placeholder="输入对应平台的 API Key">
+                <p class="hint" id="keyHint">🔒 仅存储在本地浏览器，不会上传到任何服务器</p>
+            </div>
+            
+            <div id="customEndpointBox" class="form-group hidden">
+                <label>自定义 API 地址</label>
+                <input type="text" id="customEndpoint" placeholder="https://api.example.com/v1/chat/completions">
+            </div>
+            
+            <div id="customModelBox" class="form-group hidden">
+                <label>自定义模型名称</label>
+                <input type="text" id="customModel" placeholder="gpt-4, claude-3-opus, 等">
             </div>
             
             <div class="form-group">
-                <label>系统提示词来源</label>
+                <label>系统提示词</label>
                 <select id="promptSource">
-                    <option value="builtin">使用内置精简版</option>
+                    <option value="builtin">使用内置精简版（推荐首次体验）</option>
+                    <option value="full">使用完整版（较长，效果更完整）</option>
                     <option value="custom">粘贴自定义 SKILL.md</option>
                 </select>
             </div>
             
             <div id="customPromptBox" class="form-group hidden">
-                <label>粘贴 SKILL.md 内容（可选）</label>
+                <label>粘贴自定义提示词</label>
                 <textarea id="customPrompt" rows="6" placeholder="将 SKILL.md 的完整内容粘贴到这里..."></textarea>
             </div>
             
-            <button onclick="startChat()">启动时间编辑室</button>
+            <button onclick="startChat()" id="startBtn">启动时间编辑室</button>
         </div>
 
         <!-- 聊天面板 -->
         <div id="chatPanel" class="chat-box hidden">
             <div id="messages" class="chat-messages"></div>
             <div id="errorBox" class="error hidden"></div>
-            <div class="input-area">
-                <input type="text" id="userInput" placeholder="说点什么，比如：我想知道如果去年我辞职了会怎样..." 
+            <div id="successBox" class="success hidden"></div>
+            
+            <div class="quick-starts" id="quickStarts">
+                <div class="quick-start-btn" onclick="sendQuick('我想知道如果去年我辞职了，现在会怎样')">💼 去年辞职会怎样</div>
+                <div class="quick-start-btn" onclick="sendQuick('如果三年前我选择了另一个专业，现在会在做什么')">🎓 换个专业的人生</div>
+                <div class="quick-start-btn" onclick="sendQuick('如果当时我接受了那份海外工作offer')">✈️ 接受海外offer</div>
+                <div class="quick-start-btn" onclick="sendQuick('我想看看更冒险版本的自己，启动β线推演')">🔥 启动激进β线</div>
+            </div>
+            
+            <div class="input-area" style="margin-top: 12px;">
+                <input type="text" id="userInput" placeholder="输入你想推演的人生决策..." 
                        onkeypress="if(event.key==='Enter')sendMessage()">
                 <button onclick="sendMessage()" id="sendBtn">发送</button>
             </div>
@@ -175,7 +283,92 @@
     </div>
 
     <script>
-        // 内置精简版系统提示词（基于 SKILL.md 核心逻辑）
+        // 模型配置
+        const PROVIDERS = {
+            openai: {
+                name: 'OpenAI',
+                endpoint: 'https://api.openai.com/v1/chat/completions',
+                model: 'gpt-4o',
+                headers: (key) => ({ 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' }),
+                format: 'openai',
+                tag: '<span class="tag tag-paid">付费</span>',
+                hint: '需要 OpenAI API Key (sk-...)'
+            },
+            anthropic: {
+                name: 'Anthropic Claude',
+                endpoint: 'https://api.anthropic.com/v1/messages',
+                model: 'claude-3-5-sonnet-20241022',
+                headers: (key) => ({ 'x-api-key': key, 'anthropic-version': '2023-06-01', 'Content-Type': 'application/json' }),
+                format: 'anthropic',
+                tag: '<span class="tag tag-paid">付费</span>',
+                hint: '需要 Anthropic API Key (sk-ant-...)'
+            },
+            gemini: {
+                name: 'Google Gemini',
+                endpoint: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent',
+                model: 'gemini-1.5-pro-latest',
+                headers: (key) => ({ 'Content-Type': 'application/json' }),
+                format: 'gemini',
+                tag: '<span class="tag tag-free">免费额度</span>',
+                hint: '需要 Google AI Studio API Key，每月有免费额度'
+            },
+            'gemini-flash': {
+                name: 'Google Gemini Flash',
+                endpoint: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent',
+                model: 'gemini-1.5-flash-latest',
+                headers: (key) => ({ 'Content-Type': 'application/json' }),
+                format: 'gemini',
+                tag: '<span class="tag tag-free">免费</span>',
+                hint: '需要 Google AI Studio API Key，速度更快，免费额度更宽松'
+            },
+            siliconflow: {
+                name: 'SiliconFlow',
+                endpoint: 'https://api.siliconflow.cn/v1/chat/completions',
+                model: 'deepseek-ai/DeepSeek-V2.5',
+                headers: (key) => ({ 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' }),
+                format: 'openai',
+                tag: '<span class="tag tag-cn">国内</span><span class="tag tag-free">免费额度</span>',
+                hint: '注册即送免费额度，支持 DeepSeek、Qwen 等模型'
+            },
+            deepseek: {
+                name: 'DeepSeek',
+                endpoint: 'https://api.deepseek.com/v1/chat/completions',
+                model: 'deepseek-chat',
+                headers: (key) => ({ 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' }),
+                format: 'openai',
+                tag: '<span class="tag tag-cn">国内</span><span class="tag tag-free">免费额度</span>',
+                hint: '深度求索官方 API，新用户有免费额度'
+            },
+            moonshot: {
+                name: 'Moonshot AI (Kimi)',
+                endpoint: 'https://api.moonshot.cn/v1/chat/completions',
+                model: 'moonshot-v1-8k',
+                headers: (key) => ({ 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' }),
+                format: 'openai',
+                tag: '<span class="tag tag-cn">国内</span><span class="tag tag-free">免费额度</span>',
+                hint: '月之暗面 Kimi API，新用户有免费额度'
+            },
+            zhipu: {
+                name: '智谱 AI',
+                endpoint: 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                model: 'glm-4',
+                headers: (key) => ({ 'Authorization': key, 'Content-Type': 'application/json' }),
+                format: 'openai',
+                tag: '<span class="tag tag-cn">国内</span><span class="tag tag-free">免费额度</span>',
+                hint: '智谱 GLM-4 API，新用户有免费额度'
+            },
+            custom: {
+                name: '自定义',
+                endpoint: '',
+                model: '',
+                headers: (key) => ({ 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' }),
+                format: 'openai',
+                tag: '<span class="tag tag-free">自定义</span>',
+                hint: '支持任何 OpenAI 兼容格式的 API'
+            }
+        };
+
+        // 内置精简版系统提示词
         const BUILTIN_PROMPT = `你是「赛博女娲」，一个个人人生推演系统。基于用户真实行为数据进行条件预测，不算命、不给建议，只推演"如果...那么..."。
 
 核心规则：
@@ -194,43 +387,96 @@
 
 然后直接开始推演，边推演边问1-2个澄清问题，不要一次性问太多。保持理性、略带幽默的语气。`;
 
+        // 完整版提示词（简化版，实际可从外部加载）
+        const FULL_PROMPT = BUILTIN_PROMPT + `\n\n【完整功能说明】
+- 支持时间线编辑：暂停、回溯、创建分叉、切换、合成
+- 支持特征蒸馏：零痕迹启动、数字残留提取、关系网络蒸馏、主动实验层
+- 反自我美化引擎自动校准用户自述
+- 混合题型库：选择题、迫选题、排序题、情境题、微论述题、反事实题
+- 动态更新协议：用户执行行动实验后可更新时间线概率`;
+
         let messages = [];
         let config = {};
 
-        // 切换自定义提示词输入框
+        function updateProviderInfo() {
+            const provider = document.getElementById('provider').value;
+            const info = PROVIDERS[provider];
+            document.getElementById('providerInfo').innerHTML = 
+                `${info.tag} ${info.hint}`;
+            document.getElementById('keyHint').textContent = `🔒 ${info.hint}，仅存储在本地浏览器`;
+            
+            // 显示/隐藏自定义输入
+            const isCustom = provider === 'custom';
+            document.getElementById('customEndpointBox').classList.toggle('hidden', !isCustom);
+            document.getElementById('customModelBox').classList.toggle('hidden', !isCustom);
+        }
+
         document.getElementById('promptSource').addEventListener('change', (e) => {
             document.getElementById('customPromptBox').classList.toggle('hidden', e.target.value !== 'custom');
         });
 
+        function getSystemPrompt() {
+            const source = document.getElementById('promptSource').value;
+            if (source === 'custom') {
+                return document.getElementById('customPrompt').value.trim() || BUILTIN_PROMPT;
+            }
+            if (source === 'full') return FULL_PROMPT;
+            return BUILTIN_PROMPT;
+        }
+
         function startChat() {
-            const provider = document.getElementById('provider').value;
+            const providerKey = document.getElementById('provider').value;
             const apiKey = document.getElementById('apiKey').value.trim();
-            const promptSource = document.getElementById('promptSource').value;
+            const provider = PROVIDERS[providerKey];
             
             if (!apiKey) {
-                alert('请输入 API Key');
+                showError('请输入 API Key');
                 return;
             }
 
-            const systemPrompt = promptSource === 'custom' && document.getElementById('customPrompt').value.trim()
-                ? document.getElementById('customPrompt').value.trim()
-                : BUILTIN_PROMPT;
+            let endpoint = provider.endpoint;
+            let model = provider.model;
 
-            config = { provider, apiKey, systemPrompt };
+            if (providerKey === 'custom') {
+                endpoint = document.getElementById('customEndpoint').value.trim();
+                model = document.getElementById('customModel').value.trim();
+                if (!endpoint || !model) {
+                    showError('自定义模式需要填写 API 地址和模型名称');
+                    return;
+                }
+            }
+
+            config = { 
+                provider: providerKey, 
+                apiKey, 
+                endpoint, 
+                model, 
+                format: provider.format,
+                systemPrompt: getSystemPrompt()
+            };
             
-            // 保存到本地存储（可选，方便下次使用）
-            localStorage.setItem('nuwa_provider', provider);
+            // 保存到本地存储
+            localStorage.setItem('nuwa_provider', providerKey);
             localStorage.setItem('nuwa_apiKey', apiKey);
+            if (providerKey === 'custom') {
+                localStorage.setItem('nuwa_endpoint', endpoint);
+                localStorage.setItem('nuwa_model', model);
+            }
             
             // 初始化消息历史
-            messages = [{ role: 'system', content: systemPrompt }];
+            messages = [];
             
             // 切换面板
             document.getElementById('setupPanel').classList.add('hidden');
             document.getElementById('chatPanel').classList.remove('hidden');
             
             // 发送欢迎语
-            addMessage('ai', '欢迎来到时间编辑室。我可以帮你推演未来的可能性，也能让你回到过去的某个瞬间，改写一个选择，看看会衍生出怎样的世界。\n\n想从哪里开始？告诉我：你想回溯到哪个时间点的哪个决定？');
+            addMessage('ai', '欢迎来到时间编辑室 🌌\n\n我可以帮你推演人生的可能性，也能让你回到过去的某个瞬间，改写一个选择，看看会衍生出怎样的世界。\n\n告诉我：**你想回溯到哪个时间点的哪个决定？改成什么？**\n\n或者点击下方的快捷按钮直接开始。');
+        }
+
+        function sendQuick(text) {
+            document.getElementById('userInput').value = text;
+            sendMessage();
         }
 
         async function sendMessage() {
@@ -240,27 +486,24 @@
             
             input.value = '';
             addMessage('user', text);
-            messages.push({ role: 'user', content: text });
             
             const sendBtn = document.getElementById('sendBtn');
             sendBtn.disabled = true;
             showLoading();
             hideError();
+            hideSuccess();
 
             try {
                 let response;
-                if (config.provider === 'openai') {
-                    response = await callOpenAI();
-                } else {
-                    response = await callAnthropic();
+                if (config.format === 'openai') {
+                    response = await callOpenAICompatible(text);
+                } else if (config.format === 'anthropic') {
+                    response = await callAnthropic(text);
+                } else if (config.format === 'gemini') {
+                    response = await callGemini(text);
                 }
                 
-                const aiText = config.provider === 'openai' 
-                    ? response.choices[0].message.content 
-                    : response.content[0].text;
-                
-                messages.push({ role: 'assistant', content: aiText });
-                addMessage('ai', aiText);
+                addMessage('ai', response);
                 
             } catch (err) {
                 showError('请求失败：' + err.message);
@@ -270,56 +513,101 @@
             }
         }
 
-        async function callOpenAI() {
-            const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        async function callOpenAICompatible(text) {
+            const body = {
+                model: config.model,
+                messages: [
+                    { role: 'system', content: config.systemPrompt },
+                    ...messages.filter(m => m.role !== 'system').map(m => ({ role: m.role, content: m.content })),
+                    { role: 'user', content: text }
+                ],
+                temperature: 0.8,
+                max_tokens: 2000
+            };
+
+            const res = await fetch(config.endpoint, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${config.apiKey}`
-                },
-                body: JSON.stringify({
-                    model: 'gpt-4',
-                    messages: messages,
-                    temperature: 0.8,
-                    max_tokens: 2000
-                })
+                headers: PROVIDERS[config.provider].headers(config.apiKey),
+                body: JSON.stringify(body)
             });
             
             if (!res.ok) {
-                const err = await res.json();
-                throw new Error(err.error?.message || 'OpenAI API 错误');
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.error?.message || err.message || `HTTP ${res.status}`);
             }
-            return res.json();
+            
+            const data = await res.json();
+            messages.push({ role: 'user', content: text });
+            messages.push({ role: 'assistant', content: data.choices[0].message.content });
+            return data.choices[0].message.content;
         }
 
-        async function callAnthropic() {
-            // 转换消息格式为 Claude 格式
-            const systemMsg = messages.find(m => m.role === 'system')?.content || '';
+        async function callAnthropic(text) {
             const conversation = messages.filter(m => m.role !== 'system').map(m => ({
                 role: m.role === 'assistant' ? 'assistant' : 'user',
                 content: m.content
             }));
+            conversation.push({ role: 'user', content: text });
 
-            const res = await fetch('https://api.anthropic.com/v1/messages', {
+            const res = await fetch(config.endpoint, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-api-key': config.apiKey,
-                    'anthropic-version': '2023-06-01'
-                },
+                headers: PROVIDERS[config.provider].headers(config.apiKey),
                 body: JSON.stringify({
-                    model: 'claude-3-sonnet-20240229',
+                    model: config.model,
                     max_tokens: 2000,
-                    system: systemMsg,
+                    system: config.systemPrompt,
                     messages: conversation
                 })
             });
             
             if (!res.ok) {
-                const err = await res.json();
-                throw new Error(err.error?.message || 'Anthropic API 错误');
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.error?.message || `HTTP ${res.status}`);
             }
-            return res.json();
+            
+            const data = await res.json();
+            messages.push({ role: 'user', content: text });
+            messages.push({ role: 'assistant', content: data.content[0].text });
+            return data.content[0].text;
+        }
+
+        async function callGemini(text) {
+            const history = messages.map(m => ({
+                role: m.role === 'user' ? 'user' : 'model',
+                parts: [{ text: m.content }]
+            }));
+            
+            // Gemini 没有 system role，把 system prompt 放到第一条 user message
+            if (history.length === 0) {
+                history.push({ role: 'user', parts: [{ text: config.systemPrompt }] });
+                history.push({ role: 'model', parts: [{ text: '明白了，我是赛博女娲，准备好进行人生推演了。' }] });
+            }
+            
+            history.push({ role: 'user', parts: [{ text }] });
+
+            const url = `${config.endpoint}?key=${config.apiKey}`;
+            const res = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: history,
+                    generationConfig: {
+                        temperature: 0.8,
+                        maxOutputTokens: 2000
+                    }
+                })
+            });
+            
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.error?.message || `HTTP ${res.status}`);
+            }
+            
+            const data = await res.json();
+            const aiText = data.candidates[0].content.parts[0].text;
+            messages.push({ role: 'user', content: text });
+            messages.push({ role: 'assistant', content: aiText });
+            return aiText;
         }
 
         function addMessage(role, text) {
@@ -334,7 +622,7 @@
             const div = document.createElement('div');
             div.id = 'loadingMsg';
             div.className = 'loading';
-            div.textContent = '赛博女娲正在推演时间线...';
+            div.textContent = '⏳ 赛博女娲正在推演时间线...';
             document.getElementById('messages').appendChild(div);
         }
 
@@ -353,12 +641,24 @@
             document.getElementById('errorBox').classList.add('hidden');
         }
 
+        function hideSuccess() {
+            document.getElementById('successBox').classList.add('hidden');
+        }
+
         // 恢复上次设置
         window.onload = () => {
             const savedProvider = localStorage.getItem('nuwa_provider');
             const savedKey = localStorage.getItem('nuwa_apiKey');
-            if (savedProvider) document.getElementById('provider').value = savedProvider;
+            if (savedProvider) {
+                document.getElementById('provider').value = savedProvider;
+                updateProviderInfo();
+            }
             if (savedKey) document.getElementById('apiKey').value = savedKey;
+            
+            const savedEndpoint = localStorage.getItem('nuwa_endpoint');
+            const savedModel = localStorage.getItem('nuwa_model');
+            if (savedEndpoint) document.getElementById('customEndpoint').value = savedEndpoint;
+            if (savedModel) document.getElementById('customModel').value = savedModel;
         };
     </script>
 </body>
