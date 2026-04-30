@@ -35,6 +35,12 @@
 复制下面这句话，粘贴到支持 Skill 的 AI 对话中，立刻开始：
 
 > `“我想知道如果去年我选择了离开现在的工作/关系，今天会是什么样。请启动时间线推演，先用快速题问我三个问题就立刻开始。”`
+>
+## 🚀 在线体验（无需安装）
+
+👉 **[点击启动 Web Demo](https://huhuhucpdd.github.io/nuwa-life-simulator.skill/)**（精简内置版）
+
+只需要你的 OpenAI 或 Claude API Key，所有数据仅在浏览器本地处理。
 
 ---
 
